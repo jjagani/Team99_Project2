@@ -1,6 +1,6 @@
-function test = untitled(a,b)
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
-test(1) = a;
-test(2) = b;
-end
+%PROJECT TWO HERE WE GOOOO
+%% The Particles 
+% We want to make a list of particles with 'random' densities, charges, and
+% starting places along the i axis.
+
+input()
