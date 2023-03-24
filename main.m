@@ -5,6 +5,7 @@ clc;
 tStart = 0;
 tEnd = 10;
 numSteps = 5000;
+
 tDiscretized = linspace(tStart, tEnd, numSteps);
 
 % Define your initial conditions
