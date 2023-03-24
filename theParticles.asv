@@ -2,5 +2,5 @@
 %% The Particles 
 % We want to make a list of particles with 'random' densities, charges, and
 % starting places along the i axis.
-
-input()
+particleConc = input("What is the concentration of the smog particles(in µg/m^3)? ");
+o
