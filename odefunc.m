@@ -12,7 +12,7 @@ h = 2; %height of plate (m)
 V = 10000; %Voltage on Plate (Volts)
 c = 21; %concentration of particles (ug/m^3)
 mu = 1.81e-5; %dynamic viscosity of air
-d = 5e-6;
+d = 5e-6; %PE
 
 p = p * 1e-3;
 c = c * 1e-9;
