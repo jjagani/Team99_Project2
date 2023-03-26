@@ -2,10 +2,12 @@ clear;
 clc;
 close all;
 
+
 tStart = 0; %Start Time of Discretization
 tEnd = 1;  %End Time of Discretization
 numSteps = 6000; %Number of Steps for ODE Solver
 particle_diameter = 2.5; %Particle Diameter (um)
+
 
 %% == Model Inputs ==
 p_particle = 2;           % density of particle (g/cm^3) (Avg density of PM2.5 and PM10 particles)
