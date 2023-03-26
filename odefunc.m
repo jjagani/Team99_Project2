@@ -3,23 +3,30 @@ function dxdt = odefunc(t, x)
 %x : [x1, x2] x1 = position x, x2 = velocity x
 %d : diameter of the particle (Assuming spherical particle) (mm)
 
-p = 10; %density of particle (g/cm^3)
-epsilon = 8.85e-12; %Permittivity of Free Space (Assumed as permittivity of air)
-q = 1.602e-19; %Charge of Particles
-w = 0.05; %distance of plates from each other (m)
-l = 1; %length of plate (m)
-h = 2; %height of plate (m)
-V = 10000; %Voltage on Plate (Volts)
-c = 21; %concentration of particles (ug/m^3)
-mu = 1.81e-5; %dynamic viscosity of air
-d = 5e-6; %PE
+%% == Constants ==
+p_particle = 10;           % density of particle (g/cm^3)
+epsilon =    8.85e-12;     % Permittivity of Free Space (Assumed as permittivity of air)
+q_part =     1.602e-19;    % Charge of Particles
+spacing =    0.05;         % distance of plates from each other (m)
+length =     1;            % length of the plate for calculating capacitance (black magic)
+V =          10000;        % Voltage on Plate (Volts)
+conc =       21;           % concentration of particles (ug/m^3)
+mu =         1.81e-5;      % dynamic viscosity of air
+d =          5e-6;         % PE
 
-p = p * 1e-3;
-c = c * 1e-9;
+%% == Unit Conversion ==
+p_particle = p_particle * 1e-3;
+conc =             conc * 1e-9;
 
-mp = (pi / 6) * p * d ^ 3; 
+%% == Forces ==
+drag = 3*pi * mu * d^2 * x(2)^2;
+field_plate = q_part * V / (4*pi * epsilon * length * d * spacing);
+field_charges = ((q_part^2 * conc)/(2 * epsilon)) * (2 * x(1) - spacing);
+
+%% == DiffEqs ==
+mp = (pi / 6) * p_particle * d ^ 3; 
 dxdt(1) = x(2); 
-dxdt(2) = 1/mp * ( q^2 * c / (2 * epsilon) * (2*x(1) - w) + q * V / (4*pi*epsilon*l*d*w) - 3*pi*mu* d^2 * x(2)^2);
-disp(x(2))
+dxdt(2) = 1/mp * (field_charges + field_plate - drag);
+%disp(x(2))
 dxdt = transpose(dxdt);
 end
