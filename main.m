@@ -4,7 +4,7 @@ clc;
 % Define your starting time, ending time, and # of discretized times
 tStart = 0;
 tEnd = 30;
-numSteps = 6000;
+numSteps = 1000;
 tDiscretized = linspace(tStart, tEnd, numSteps);
 
 x0 = [0,0];
