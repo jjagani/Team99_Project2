@@ -16,8 +16,10 @@ d = 5e-6; %PE
 
 p = p * 1e-3;
 c = c * 1e-9;
+
 mp = (pi / 6) * p * d ^ 3; 
 dxdt(1) = x(2); 
-dxdt(2) = 1/mp * ( q^2 * c / (2 * epsilon) * (2*x(1) - w) + (q *  V) / (4 * pi * w) - 3*pi*mu*d * x(2));
+dxdt(2) = 1/mp * ( q^2 * c / (2 * epsilon) * (2*x(1) - w) + q * V / (4*pi*epsilon*l*d*w) - 3*pi*mu* d^2 * x(2)^2);
+disp(x(2))
 dxdt = transpose(dxdt);
 end
