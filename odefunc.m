@@ -1,5 +1,6 @@
 function dxdt = odefunc(t, x, p_particle, epsilon, q_part, spacing, V, conc, mu, d)
-
+% x =    [position velocity]
+% dxdt = [velocity acceleration]
 
 %% == Unit Conversion ==
 p_particle = p_particle * 1e-3;
