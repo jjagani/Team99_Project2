@@ -1,4 +1,4 @@
-function [tDiscretized h_position h_velocity v_position] = simParticle(particleData, intialCond, simData)
+function [tDiscretized, h_position, h_velocity, v_position] = simParticle(particleData, intialCond, simData)
 %simParticle simulates one particle given its parameters
 
 %% ======= DATA SETUP =======
@@ -17,8 +17,8 @@ diam =        particleData(8)
 % of the form [position velocity]
 
 %% data for running the simulation
-tDisctized  =  simData(1)
-outputSteps = simData(2) % number of steps of position to output to save memory
+tDiscretized  =  simData(1);
+outputSteps = simData(2); % number of steps of position to output to save memory
 
 %% Run simulation
 [~,soln] = ode45(@(t,x) odefunc(t,x,p_particle, epsilon, q_particle, spacing, V, conc, mu, diam), tDiscretized, x0);
@@ -36,4 +36,5 @@ v_position = zeros(1, cutoff);
 for i = 2:cutoff
     v_position(i) = v_position(i-1) + particleSpeed(h_position(i), spacing, 0, 1) * (tDiscretized(i) - tDiscretized(i-1));
 end
+
 
