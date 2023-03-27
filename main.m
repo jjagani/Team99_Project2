@@ -72,5 +72,3 @@ xlim([0 spacing])
 title("Position of Particle")
 xlabel("Horizontal Position (m)")
 ylabel("Vertical Position (m)")
-
-
