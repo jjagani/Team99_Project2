@@ -44,10 +44,8 @@ end
 
 
 
-% plot stuff
+%% Position and Velocity
 figure(1)
-hold on
-
 yyaxis left
 plot(tDiscretized, h_velocity);
 xlim([0 tDiscretized(end)])
@@ -62,6 +60,7 @@ title("Position and Velocity over Time")
 xlabel("Times (s)")
 legend("Horizontal Velocity", "Horizontal Position", Location="southeast")
 
+%% Particle Path
 figure(2)
 hold on
 plot(h_position, v_position)
