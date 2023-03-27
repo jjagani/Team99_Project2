@@ -10,19 +10,19 @@ particle_diameter = 2.5;  % Particle Diameter (um)
 numPositionPoints = 50;  % Number of points to plot along position graph
 
 %% == Model Inputs ==
-p_particle = 2;            % density of particle (g/cm^3) (Avg density of PM2.5 and PM10 particles)
-epsilon =    8.85e-12;     % Permittivity of Free Space (Assumed as permittivity of air)
-q_part =     1.602e-19;    % Charge of Particles (Assume only one electron attaches)
-spacing =    0.05;         % distance of plates from each other (m)
-V =          120;          % Voltage on Plate (Volts)
-conc =       21;           % concentration of particles (ug/m^3)
-mu =         1.81e-5;      % dynamic viscosity of air
-d =          5;            % Diameter of Particle (um)
+p_particle = 2;              % density of particle (g/cm^3) (Avg density of PM2.5 and PM10 particles)
+epsilon =    8.85e-12;       % Permittivity of Free Space (Assumed as permittivity of air)
+q_particle = 1.602e-19;  % Charge of Particles (Assume only one electron attaches)
+spacing =    0.05;           % distance of plates from each other (m)
+V =          120;            % Voltage on Plate (Volts)
+conc =       21;             % concentration of particles (ug/m^3)
+mu =         1.81e-5;        % dynamic viscosity of air
+diam =       5;              % Diameter of Particle (um)
 
 %% == Calculations ==
 tDiscretized = linspace(tStart, tEnd, numSteps); 
 x0 = [0,0]; %Particle Initial Conditions
-[t,soln] = ode45(@(t,x) odefunc(t,x,p_particle, epsilon, q_part, spacing, V, conc, mu, d), tDiscretized, x0);
+[t,soln] = ode45(@(t,x) odefunc(t,x,p_particle, epsilon, q_particle, spacing, V, conc, mu, diam), tDiscretized, x0);
 
 %% == Plots ==
 h_position = soln(:,1);
@@ -64,7 +64,7 @@ legend("Horizontal Velocity", "Horizontal Position", Location="southeast")
 figure(2)
 hold on
 plot(h_position, v_position)
-scatter(h_position(1:floor(cutoff/numPositionPoints):end), ...
+plot(h_position(1:floor(cutoff/numPositionPoints):end), ...
         v_position(1:floor(cutoff/numPositionPoints):end), ...
         15,"filled",MarkerEdgeColor="#0072bd",MarkerFaceColor="none")
 xlim([0 spacing])
