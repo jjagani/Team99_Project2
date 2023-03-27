@@ -1,21 +1,10 @@
-function dxdt = odefunc(t, x)
-%t : time
-%x : [x1, x2] x1 = position x, x2 = velocity x
-%d : diameter of the particle (Assuming spherical particle) (mm)
+function dxdt = odefunc(t, x, p_particle, epsilon, q_part, spacing, V, conc, mu, d)
 
-%% == Constants ==
-p_particle = 10;           % density of particle (g/cm^3)
-epsilon =    8.85e-12;     % Permittivity of Free Space (Assumed as permittivity of air)
-q_part =     1.602e-19;    % Charge of Particles
-spacing =    0.05;         % distance of plates from each other (m)
-V =          120;          % Voltage on Plate (Volts)
-conc =       21;           % concentration of particles (ug/m^3)
-mu =         1.81e-5;      % dynamic viscosity of air
-d =          5e-6;         % PE
 
 %% == Unit Conversion ==
 p_particle = p_particle * 1e-3;
 conc =             conc * 1e-9;
+d = d * 1e-6;
 
 %% == Forces ==
 drag = 3*pi * mu * d^2 * x(2)^2;
