@@ -37,7 +37,6 @@ tDiscretized = tDiscretized(1:cutoff);
 % calculate vertical position by eulers method on tDiscretized and particle
 % speed function (the air moves faster in the middle
 v_position = zeros(1, cutoff);
-v_position(1) = spacing;
 for i = 2:cutoff
     v_position(i) = v_position(i-1) + particleSpeed(h_position(i), spacing, 0, 1) * (tDiscretized(i) - tDiscretized(i-1));
 end
@@ -64,7 +63,7 @@ legend("Horizontal Velocity", "Horizontal Position", Location="southeast")
 figure(2)
 hold on
 plot(h_position, v_position)
-plot(h_position(1:floor(cutoff/numPositionPoints):end), ...
+scatter(h_position(1:floor(cutoff/numPositionPoints):end), ...
         v_position(1:floor(cutoff/numPositionPoints):end), ...
         15,"filled",MarkerEdgeColor="#0072bd",MarkerFaceColor="none")
 xlim([0 spacing])
