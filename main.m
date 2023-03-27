@@ -8,6 +8,6 @@ numSteps = 6000;
 tDiscretized = linspace(tStart, tEnd, numSteps);
 
 x0 = [0,0];
-[t,soln] = ode15s(@odefunc, tDiscretized, x0);
+[t,soln] = ode45(@odefunc, tDiscretized, x0);
 
 plot(t, soln);

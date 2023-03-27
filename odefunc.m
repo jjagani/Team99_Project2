@@ -8,8 +8,7 @@ p_particle = 10;           % density of particle (g/cm^3)
 epsilon =    8.85e-12;     % Permittivity of Free Space (Assumed as permittivity of air)
 q_part =     1.602e-19;    % Charge of Particles
 spacing =    0.05;         % distance of plates from each other (m)
-length =     1;            % length of the plate for calculating capacitance (black magic)
-V =          10000;        % Voltage on Plate (Volts)
+V =          120;          % Voltage on Plate (Volts)
 conc =       21;           % concentration of particles (ug/m^3)
 mu =         1.81e-5;      % dynamic viscosity of air
 d =          5e-6;         % PE
@@ -20,7 +19,7 @@ conc =             conc * 1e-9;
 
 %% == Forces ==
 drag = 3*pi * mu * d^2 * x(2)^2;
-field_plate = q_part * V / (4*pi * epsilon * length * d * spacing);
+field_plate = q_part * V / (4*pi * spacing);
 field_charges = ((q_part^2 * conc)/(2 * epsilon)) * (2 * x(1) - spacing);
 
 %% == DiffEqs ==
