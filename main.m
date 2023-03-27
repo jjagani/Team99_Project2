@@ -34,11 +34,12 @@ h_position = h_position(1:cutoff);
 h_velocity = h_velocity(1:cutoff);
 tDiscretized = tDiscretized(1:cutoff);
 
-% calculate vertical position
+% calculate vertical position by eulers method on tDiscretized and particle
+% speed function (the air moves faster in the middle
 v_position = zeros(1, cutoff);
 v_position(1) = spacing;
 for i = 2:cutoff
-    v_position(i) = v_position(i-1) + particleSpeed(h_position(i), spacing, 1) * (tDiscretized(i) - tDiscretized(i-1));
+    v_position(i) = v_position(i-1) + particleSpeed(h_position(i), spacing, 0, 1) * (tDiscretized(i) - tDiscretized(i-1));
 end
 
 
@@ -70,7 +71,7 @@ scatter(h_position(1:floor(cutoff/numPositionPoints):end), ...
 xlim([0 spacing])
 
 title("Position of Particle")
-xlabel("Horizontal Position")
-ylabel("Vertical Position")
+xlabel("Horizontal Position (m)")
+ylabel("Vertical Position (m)")
 
 
