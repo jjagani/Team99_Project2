@@ -21,7 +21,7 @@ tDiscretized  =  simData(1);
 outputSteps = simData(2); % number of steps of position to output to save memory
 
 %% Run simulation
-[~,soln] = ode45(@(t,x) odefunc(t,x,p_particle, epsilon, q_particle, spacing, V, conc, mu, diam), tDiscretized, x0);
+[~,soln] = ode45(@(t,x) odefunc(t,x,p_particle, epsilon, q_particle, spacing, V, conc, mu, diam), tDiscretized, intialCond);
     
 %% process results
 % cutoff data when it hits the plate (or where the plate would be)
