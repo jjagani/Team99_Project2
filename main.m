@@ -40,7 +40,7 @@ crit_h=       v_position(end);            % Lowest height at which first particl
 capture_time = tDiscretized(end);                      % time to capture of particle at crit_h
 volume_capacitor = ((l - crit_h) * w * spacing); %volume between single capacitor plates used to capture particles
 volume_capacitor_total = volume_capacitor * num_capacitors; %volume between all capacitor plate
-airflow_fan = volume_capacitor_total / capture_time; %Airflow of entrance/exit fan in m^3 / s
+airflow_fan = volume_capacitor_total / capture_time * 60; %Airflow of entrance/exit fan in m^3 / min
 disp(airflow_fan);
 %x0 = [0,0]; %Particle Initial Conditions
 %[t,soln] = ode45(@(t,x) odefunc(t,x,p_particle, epsilon, q_particle, spacing, V, conc, mu, diam), tDiscretized, x0);
