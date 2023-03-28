@@ -14,11 +14,13 @@ p_particle =  2;              % density of particle (g/cm^3) (Avg density of PM2
 epsilon =     8.85e-12;       % Permittivity of Free Space (Assumed as permittivity of air)
 q_particle =  1.602e-19;      % Charge of Particles (Assume only one electron attaches)
 spacing =     0.1;           % distance of plates from each other (m)
-V =           176;            % Voltage on Plate (Volts)
+V =           400;            % Voltage on Plate (Volts)
 conc =        75;             % concentration of particles (ug/m^3)
 mu =          1.81e-5;        % dynamic viscosity of air
 diam =        5;              % Diameter of Particle (um)
 maxAirspeed = 5;              % Maximum airspeed in center (m/s)
+
+
 
 particleData = [p_particle epsilon q_particle spacing V conc mu diam maxAirspeed];
 initialCond = [0 0];
@@ -26,8 +28,20 @@ tDiscretized = linspace(tStart, tEnd, numSteps);
 simData = [tDiscretized 100];
 
 %% == Calculations ==
+
 [tDiscretized, h_position, h_velocity, v_position] = simParticle(particleData, initialCond, tDiscretized);
 
+%% ==Model Dependent variables==
+num_plates = 50;              % Number of plates in full size tower
+num_capacitors = num_plates - 1; %Number of capacitors in full size tower
+l =           5;              % Length of capacitor plates (vertical direction)
+w =           2;              % Width of capacitor  plates (horizontal direction)
+crit_h=       v_position(end);            % Lowest height at which first particles get caught
+capture_time = tDiscretized(end);                      % time to capture of particle at crit_h
+volume_capacitor = ((l - crit_h) * w * spacing); %volume between single capacitor plates used to capture particles
+volume_capacitor_total = volume_capacitor * num_capacitors; %volume between all capacitor plate
+airflow_fan = volume_capacitor_total / capture_time; %Airflow of entrance/exit fan in m^3 / s
+disp(airflow_fan);
 %x0 = [0,0]; %Particle Initial Conditions
 %[t,soln] = ode45(@(t,x) odefunc(t,x,p_particle, epsilon, q_particle, spacing, V, conc, mu, diam), tDiscretized, x0);
 
