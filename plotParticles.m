@@ -12,6 +12,6 @@ vPosMat = ultimateDataMatrix(:,4,:);
 figure(1)
 hold on
 for particle = 1:dim(1)
-    plot(hPosMat(:,:,particle), vPosMat(:,:,particle))
+    plot(hPosMat(:,particle,:), vPosMat(:,particle,:))
 end
 end
