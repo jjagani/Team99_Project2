@@ -26,7 +26,7 @@ maxAirspeed = particleData(9);
 %% process results
 % cutoff data when it hits the plate (or where the plate would be)
 
-cutoff = 1000; %find(soln(:,1) > spacing, 1);
+cutoff = find(soln(:,1) > spacing, 1);
 h_position = soln(1:cutoff,1);
 h_velocity = soln(1:cutoff,2);
 tDiscretized = tDiscretized(1:cutoff);
