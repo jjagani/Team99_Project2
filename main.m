@@ -4,7 +4,7 @@ close all;
 
 
 tStart = 0;               % Start Time of Discretization
-tEnd = 1;                 % End Time of Discretization
+tEnd = 10;                 % End Time of Discretization
 numSteps = 1000;         % Number of Steps for ODE Solver
 particle_diameter = 2.5;  % Particle Diameter (um)
 numPositionPoints = 50;  % Number of points to plot along position graph
@@ -15,10 +15,10 @@ epsilon =     8.85e-12;       % Permittivity of Free Space (Assumed as permittiv
 q_particle =  1.602e-19;      % Charge of Particles (Assume only one electron attaches)
 spacing =     0.1;            % distance of plates from each other (m)
 V =           176;            % Voltage on Plate (Volts)
-conc =        20;             % concentration of particles (ug/m^3)
+conc =        75;             % concentration of particles (ug/m^3)
 mu =          1.81e-5;        % dynamic viscosity of air
-diam =        10;             % Diameter of Particle (um)
-maxAirspeed = 1;              % Maximum airspeed in center (m/s)
+diam =        5;             % Diameter of Particle (um)
+maxAirspeed = 5;              % Maximum airspeed in center (m/s)
 
 particleData = [p_particle epsilon q_particle spacing V conc mu diam maxAirspeed];
 tDiscretized = linspace(tStart, tEnd, numSteps);
