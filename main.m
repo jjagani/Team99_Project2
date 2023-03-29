@@ -29,7 +29,7 @@ tDiscretized = linspace(tStart, tEnd, numSteps);
 p_count = 10; % amount of particles you want to run
 ultimateDataMatrix = zeros(p_count, 4, numSteps); % all the outputs will go here underneath their respective columns
 
-for x = 1:p_count
+for i = 1:p_count
     initialConditions = particleIC(spacing); % uses the initial condition function to randomize position
     [tDiscretized, h_position, h_velocity, v_position] = simParticle(particleData, initialConditions, tDiscretized); 
     ultimateDataMatrix(p, 1) = tDiscretized;
