@@ -29,7 +29,7 @@ maxAirspeed = particleData(9);
 cutoff = find(soln(:,1) > spacing, 1);
 h_position = soln(1:cutoff,1);
 h_velocity = soln(1:cutoff,2);
-tDiscretized = tDiscretized(1:cutoff);
+tDiscretized = t(1:cutoff);
 
 % calculate vertical position
 v_position = zeros(1, cutoff);
