@@ -5,7 +5,7 @@ close all;
 
 tStart = 0;               % Start Time of Discretization
 tEnd = 10;                 % End Time of Discretization
-numSteps = 10000;         % Number of Steps for ODE Solver
+numSteps = 1000;         % Number of Steps for ODE Solver
 particle_diameter = 2.5;  % Particle Diameter (um)
 numPositionPoints = 50;  % Number of points to plot along position graph
 
