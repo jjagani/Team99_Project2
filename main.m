@@ -4,7 +4,7 @@ close all;
 
 
 tStart = 0;               % Start Time of Discretization
-tEnd = 10;                 % End Time of Discretization
+tEnd = 1;                 % End Time of Discretization
 numSteps = 1000;         % Number of Steps for ODE Solver
 particle_diameter = 2.5;  % Particle Diameter (um)
 numPositionPoints = 50;  % Number of points to plot along position graph
@@ -18,7 +18,7 @@ V =           176;            % Voltage on Plate (Volts)
 conc =        20;             % concentration of particles (ug/m^3)
 mu =          1.81e-5;        % dynamic viscosity of air
 diam =        10;             % Diameter of Particle (um)
-maxAirspeed = 5;              % Maximum airspeed in center (m/s)
+maxAirspeed = 1;              % Maximum airspeed in center (m/s)
 
 particleData = [p_particle epsilon q_particle spacing V conc mu diam maxAirspeed];
 tDiscretized = linspace(tStart, tEnd, numSteps);
@@ -26,7 +26,7 @@ tDiscretized = linspace(tStart, tEnd, numSteps);
 %% == Calculations ==
 
 % many particles simulation code
-p_count = 1; % amount of particles you want to run
+p_count = 2; % amount of particles you want to run
 ultimateDataMatrix = zeros(p_count, 4, numSteps); % all the outputs will go here underneath their respective columns
 
 for pIndex = 1:p_count
