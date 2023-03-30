@@ -20,7 +20,7 @@ for particle = 1:dim(1)
     plot(hPosMat(particle,:), vPosMat(particle,:), Color=[colors(particle,:)])
 end
 xlim([0 max(hPosMat(:,end))])
-
+ylim([0 max(vPosMat(:,end))])
 title("Position of Particle")
 xlabel("Horizontal Position (m)")
 ylabel("Vertical Position (m)")
