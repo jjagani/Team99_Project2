@@ -8,10 +8,10 @@ function [posIC, velIC] = particleIC(width)
 rawValue = rand(1,1) - .5;
 
 % retains the sign of the value after squaring
-if rawValue > 0 
-    squareValue = rawValue^2;
+if rawValue > 0
+    squareValue = rawValue^.5;
 elseif rawValue <= 0
-    squareValue = -1 * (rawValue^2);
+    squareValue = -1 * abs(rawValue^.5);
 end
 
 % applies the random number to the width of the plates
