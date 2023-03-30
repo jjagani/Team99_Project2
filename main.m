@@ -4,7 +4,7 @@ close all;
 
 
 tStart = 0;               % Start Time of Discretization
-tEnd = 10;                 % End Time of Discretization
+tEnd = 2;                 % End Time of Discretization
 numSteps = 1000;         % Number of Steps for ODE Solver
 particle_diameter = 2.5;  % Particle Diameter (um)
 numPositionPoints = 50;  % Number of points to plot along position graph
@@ -26,13 +26,13 @@ tDiscretized = linspace(tStart, tEnd, numSteps);
 %% == Calculations ==
 
 % many particles simulation code
-p_count = 2; % amount of particles you want to run
-ultimateDataMatrix = zeros(p_count, 4, numSteps); % all the outputs will go here underneath their respective columns
+p_count = 200; % amount of particles you want to run
+ultimateDataMatrix = zeros(p_count, 4, numPositionPoints); % all the outputs will go here underneath their respective columns
 
 for pIndex = 1:p_count
-    %initialConditions = particleIC(spacing); % uses the initial condition function to randomize position
-    [tDiscretized, h_position, h_velocity, v_position] = simParticle(particleData, [0 0], tDiscretized); 
-    ultimateDataMatrix(pIndex, 1, :) = tDiscretized;
+    initialConditions = [spacing / p_count * (pIndex - 1) 0]; % uses the initial condition function to randomize position
+    [tActual, h_position, h_velocity, v_position] = simParticle(particleData, initialConditions, tDiscretized, numPositionPoints); 
+    ultimateDataMatrix(pIndex, 1, :) = tActual;
     ultimateDataMatrix(pIndex, 2, :) = h_position;
     ultimateDataMatrix(pIndex, 3, :) = h_velocity;
     ultimateDataMatrix(pIndex, 4, :) = v_position;

@@ -5,7 +5,7 @@ function [posIC, velIC] = particleIC(width)
 
 % this finds a random float between 1 and 0 and then .5 is subtracted 
 % from it
-rawValue = rand(1,1) - .5;
+rawValue = rand(1) - .5;
 
 % retains the sign of the value after squaring
 if rawValue > 0 

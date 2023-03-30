@@ -7,12 +7,15 @@ hPosMat = squeeze(ultimateDataMatrix(:,2,:));
 hVelMat = squeeze(ultimateDataMatrix(:,3,:));
 vPosMat = squeeze(ultimateDataMatrix(:,4,:));
 
-disp(dim)
-disp(size(hPosMat))
 %% Plot Particles Position
 figure(1)
 hold on
 for particle = 1:dim(1)
     plot(hPosMat(particle,:), vPosMat(particle,:))
 end
+xlim([0 max(hPosMat(:,end))])
+
+title("Position of Particle")
+xlabel("Horizontal Position (m)")
+ylabel("Vertical Position (m)")
 end

@@ -8,8 +8,8 @@ amountOfValues = 10000;
 values = zeros(1, amountOfValues);
 
 for x = 1:amountOfValues
-    randNumber = rand(1,1) - .5;
-    randNumber2 = randNumber^2;
+    %randNumber = rand(1,1) - .5;
+    %randNumber2 = randNumber^2;
     values(x) = particleIC(1);
 end
  

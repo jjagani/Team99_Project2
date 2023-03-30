@@ -1,4 +1,4 @@
-function [tDiscretized, h_position, h_velocity, v_position] = simParticle(particleData, initialCond, tDiscretized)
+function [tDiscretized, h_position, h_velocity, v_position] = simParticle(particleData, initialCond, tDiscretized, numPoints)
 %simParticle simulates one particle given its parameters
 
 %% ======= DATA SETUP =======
@@ -26,14 +26,12 @@ maxAirspeed = particleData(9);
 %% process results
 % cutoff data when it hits the plate (or where the plate would be)
 
-cutoff = length(tDiscretized);%find(soln(:,1) > spacing, 1);
-h_position = soln(:,1);
-h_velocity = soln(:,2);
-tDiscretized = tDiscretized(:);
+cutoff = find(soln(:,1) > spacing, 1);
 
-h_position(cutoff:end) = 0;
-h_velocity(cutoff:end) = 0;
-tDiscretized = tDiscretized(:);
+h_position = soln(1:cutoff,1);
+h_velocity = soln(1:cutoff,2);
+tDiscretized = t(1:cutoff);
+
 
 % calculate vertical position
 v_position = zeros(1, cutoff);
@@ -41,4 +39,8 @@ for i = 2:cutoff
     v_position(i) = v_position(i-1) + particleSpeed(h_position(i), spacing, 0, maxAirspeed) * (tDiscretized(i) - tDiscretized(i-1));
 end
 
-
+%% remap data to correct contant number of data points
+h_position = h_position(floor(linspace(1,cutoff,numPoints)));
+h_velocity = h_velocity(floor(linspace(1,cutoff,numPoints)));
+v_position = v_position(floor(linspace(1,cutoff,numPoints)));
+tDiscretized = tDiscretized(floor(linspace(1,cutoff,numPoints)));
