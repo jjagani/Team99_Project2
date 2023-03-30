@@ -7,7 +7,7 @@ close all;
 tStart = 0;               % Start Time of Discretization
 tEnd = 2;                 % End Time of Discretization
 numSteps = 1000;          % Number of Steps for ODE Solver
-particle_diameter = 2.5;  % Particle Diameter (um)
+%particle_diameter = 2.5;  % Particle Diameter (um)
 numPositionPoints = 50;   % Number of data points for the simulation to return for each particles path
 p_count = 100; % amount of particles you want to run
 
