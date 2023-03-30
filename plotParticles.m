@@ -7,11 +7,17 @@ hPosMat = squeeze(ultimateDataMatrix(:,2,:));
 hVelMat = squeeze(ultimateDataMatrix(:,3,:));
 vPosMat = squeeze(ultimateDataMatrix(:,4,:));
 
+
+%% Setup Color
+color2 = [237, 177, 32] / 255;
+color1 = [77, 190, 238] / 255;
+alpha = linspace(0, 1, dim(1));
+colors = alpha(:)*color1 + (1-alpha(:))*color2;
 %% Plot Particles Position
 figure(1)
 hold on
 for particle = 1:dim(1)
-    plot(hPosMat(particle,:), vPosMat(particle,:))
+    plot(hPosMat(particle,:), vPosMat(particle,:), Color=[colors(particle,:)])
 end
 xlim([0 max(hPosMat(:,end))])
 
