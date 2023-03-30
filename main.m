@@ -9,7 +9,7 @@ tEnd = 2;                 % End Time of Discretization
 numSteps = 1000;          % Number of Steps for ODE Solver
 particle_diameter = 2.5;  % Particle Diameter (um)
 numPositionPoints = 50;   % Number of data points for the simulation to return for each particles path
-p_count = 20; % amount of particles you want to run
+p_count = 100; % amount of particles you want to run
 
 % particle data
 p_particle =  2;              % density of particle (g/cm^3) (Avg density of PM2.5 and PM10 particles)
@@ -27,10 +27,13 @@ maxAirspeed = 5;              % Maximum airspeed in center (m/s)
 particleData = [p_particle epsilon q_particle spacing V conc mu diam maxAirspeed];
 particleDataMat = repmat(particleData, p_count, 1);
 
+particleDataMat(:,9) = repmat(linspace(1,10,10), 1, 10);
+
 % turn initialConditions into a matrix with a row for each particle
 initialConditions = [0 0];
 initCondMat = repmat(initialConditions, p_count, 1);
-initCondMat(:,1) = linspace(0,spacing, p_count);
+
+initCondMat(:,1) = repelem(linspace(0,spacing, 10),10);
 
 % setup timesteps
 tDiscretized = linspace(tStart, tEnd, numSteps);

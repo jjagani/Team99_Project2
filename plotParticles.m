@@ -13,6 +13,7 @@ color2 = [237, 177, 32] / 255;
 color1 = [77, 190, 238] / 255;
 alpha = linspace(0, 1, dim(1));
 colors = alpha(:)*color1 + (1-alpha(:))*color2;
+colors = repelem(parula(10),10,1);
 %% Plot Particles Position
 figure(1)
 hold on
