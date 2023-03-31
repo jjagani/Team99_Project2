@@ -30,7 +30,7 @@ diam =        [5 5 1];
 maxAirspeed = [5 5 1]; 
 
 % Initial position of the particle (m)
-initialP =    [0 0 1];
+initialP =    [0 .1 4];
 
 % Initial velocity of the particle (m/s)
 initialV =    [0 0 1];
@@ -38,9 +38,21 @@ initialV =    [0 0 1];
 if(userInput)
     % get user input here
 end
-allRawData = [p_particle; epsilon; q_particle; spacing; conc; mu; diam; maxAirspeed; initialP; initialV];
-allRawData
 
+parsedDataMat = 0;
 
+rawInputs = [p_particle; epsilon; q_particle; spacing; V; conc; mu; diam; maxAirspeed; initialP; initialV];
+
+for i=1:length(rawInputs)
+    rawSingleInput = rawInputs(i,:);
+    spacedVals = linspace(rawSingleInput(1), rawSingleInput(2), rawSingleInput(3));
+    repSpacedVals = repelem(spacedVals, size(parsedDataMat,1));
+
+    parsedDataMat = repmat(parsedDataMat, length(spacedVals), 1);
+    parsedDataMat(:,i) = repSpacedVals;
+end
+
+particleDataMat = parsedDataMat(:,1:9);
+initialCondMat = parsedDataMat(:,10:11);
 end
 
