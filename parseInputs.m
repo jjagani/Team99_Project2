@@ -9,7 +9,7 @@ p_particle =  [2 2 1];
 epsilon =     [8.85e-12 8.85e-12 1];
 
 % Charge of Particles (Assume only one electron attaches)
-q_particle =  [1.602e-19 1.602e-19 1];
+q_particle =  [3.84e-12 3.84e-12 1];
 
 % distance of plates from each other (m)
 spacing =     [0.1 0.1 1];
