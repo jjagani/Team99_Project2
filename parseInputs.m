@@ -27,10 +27,10 @@ mu =          [1.8e-5 1.81e-5 1];
 diam =        [5 5 1];
 
 % Maximum airspeed in center (m/s)
-maxAirspeed = [1 5 5]; 
+maxAirspeed = [2.568 10 4]; 
 
 % Initial position of the particle (m)
-initialP =    [0 .09 10];
+initialP =    [0 .09 5];
 
 % Initial velocity of the particle (m/s)
 initialV =    [0 0 1];

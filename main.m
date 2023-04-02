@@ -22,7 +22,7 @@ p_count = size(initCondMat,1);
 
 % many particles simulation code
 ultimateDataMatrix = zeros(p_count, 4, numPositionPoints); % all the outputs will go here underneath their respective columns
-
+disp("== Inputs Generated ==")
 for p = 1:p_count
     [tActual, h_position, h_velocity, v_position] = simParticle(particleDataMat(p,:), initCondMat(p,:), tDiscretized, numPositionPoints); 
     ultimateDataMatrix(p, 1, :) = tActual;
