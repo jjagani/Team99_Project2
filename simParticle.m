@@ -22,7 +22,8 @@ maxAirspeed = particleData(9);
 
 %% Run simulation
 [t,soln] = ode45(@(t,x) odefunc(t,x,p_particle, epsilon, q_particle, spacing, V, conc, mu, diam), tDiscretized, initialCond);
-    
+
+
 %% process results
 % cutoff data when it hits the plate (or where the plate would be)
 

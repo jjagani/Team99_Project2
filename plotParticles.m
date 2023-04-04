@@ -13,16 +13,18 @@ color2 = [237, 177, 32] / 255;
 color1 = [77, 190, 238] / 255;
 alpha = linspace(0, 1, dim(1));
 colors = alpha(:)*color1 + (1-alpha(:))*color2;
-colors = repelem(parula(10),10,1);
+colors = repelem(turbo(5),10,1);
 %% Plot Particles Position
 figure(1)
 hold on
 for particle = 1:dim(1)
     plot(hPosMat(particle,:), vPosMat(particle,:), Color=[colors(particle,:)])
 end
-xlim([0 max(hPosMat(:,end))])
+xlim([0 .05]) %max(hPosMat(:,end))])
 ylim([0 max(vPosMat(:,end))])
 title("Position of Particle")
 xlabel("Horizontal Position (m)")
 ylabel("Vertical Position (m)")
+
+set(gca,'Ydir','reverse')
 end

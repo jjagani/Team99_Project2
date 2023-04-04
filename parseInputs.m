@@ -9,13 +9,13 @@ p_particle =  [2 2 1];
 epsilon =     [8.85e-12 8.85e-12 1];
 
 % Charge of Particles (Assume only one electron attaches)
-q_particle =  [3.84e-12 3.84e-12 1];
+q_particle =  [3.84e-19 3.84e-19 1];
 
 % distance of plates from each other (m)
-spacing =     [0.1 0.1 1];
+spacing =     [0.05 0.05 1];
 
 % Voltage on Plate (Volts)
-V =           [176 176 1];
+V =           [30 30 1];
 
 % concentration of particles (ug/m^3)
 conc =        [75 75 1];
@@ -24,13 +24,13 @@ conc =        [75 75 1];
 mu =          [1.8e-5 1.81e-5 1];
 
 % Diameter of Particle (um)
-diam =        [5 5 1];
+diam =        [1 10 10];
 
 % Maximum airspeed in center (m/s)
-maxAirspeed = [2.568 10 4]; 
+maxAirspeed = [3.8486 3.8486 1]; 
 
 % Initial position of the particle (m)
-initialP =    [0 .09 5];
+initialP =    [0 .04 5];
 
 % Initial velocity of the particle (m/s)
 initialV =    [0 0 1];
